@@ -1,4 +1,5 @@
 *.JPG
 *.jpg
 *.gdoc
+*.ipynb
 /allergy-python
