@@ -3,46 +3,13 @@ import unirest
 import ssl
 import jaconv
 
-# Get image link, return detected words and bounding box
-'''
-def ocr_old(url_link):
-    response = unirest.post("https://microsoft-azure-microsoft-computer-vision-v1.p.rapidapi.com/ocr?language=unk",
-                            headers={
-                                "X-RapidAPI-Key": "f61cc459a4msh1088b9535c232b4p1efb59jsn2a694b505fef",
-                                "Content-Type": "application/json"
-                            },
-                            params=("{\"url\":\"%s\"}" % url_link)
-                            )
-    all_word = list()
-    all_word_bb = list()
-    result = response.body
-    try:
-        language = result[u'language']
-        for region in result[u'regions']:
-            for line in region[u'lines']:
-                sentence = ''
-                for word in line[u'words']:
-                    all_word.append(word[u'text'])
-                    all_word_bb.append(word[u'boundingBox'])
-                    # print(word[u'text'])
-                    sentence = sentence + word[u'text']
-        # print("Full sentence : " + word_list_to_str(all_word) + "\n")
-    except KeyError:
-        print(result)
-        print(url_link)
-        all_word = []
-        all_word_bb = []
-        language = 'unk'
-    return {'word': all_word, 'bb': all_word_bb}, language
-'''
-
 
 # Get information from image using Microsoft CV API
 def ocr(url_link):
     # print("{\"url\":\"%s\"}" % url_link)
     response = unirest.post("https://microsoft-azure-microsoft-computer-vision-v1.p.rapidapi.com/ocr?language=unk",
                             headers={
-                                "X-RapidAPI-Key": "f61cc459a4msh1088b9535c232b4p1efb59jsn2a694b505fef",
+                                "",  # Add api-key here,
                                 "Content-Type": "application/json"
                             },
                             params=("{\"url\":\"%s\"}" % url_link)
@@ -112,7 +79,7 @@ def translate_microsoft(text, language="en"):
     url = url.encode('utf-8')
     response = unirest.get(url,
                            headers={
-                               "X-RapidAPI-Key": "f61cc459a4msh1088b9535c232b4p1efb59jsn2a694b505fef"
+                               ""  # Add api-key here
                            }
                            )
     full_response = response.body
@@ -130,7 +97,7 @@ def translate_sys(text, language="en"):
     try:
         response = unirest.get(url,
                                headers={
-                                   "X-RapidAPI-Key": "f61cc459a4msh1088b9535c232b4p1efb59jsn2a694b505fef"
+                                   ""  # Add api-key here
                                }
                                )
     except ssl.SSLError:
