@@ -403,10 +403,6 @@ def get_allergies(url_link, allergies=None):
 
 
 if __name__ == '__main__':
-    # url_link = "https://res.cloudinary.com/pasink/image/upload/v1550237262/test_hd.jpg"  # First Sample
-    # url_link = "https://res.cloudinary.com/pasink/image/upload/v1550300203/test2.jpg"  # Second Sample, MS error
-    # url_link = "https://res.cloudinary.com/pasink/image/upload/v1550289399/vertical1.jpg" # Not found Sample
-    # url_link = "https://res.cloudinary.com/pasink/image/upload/v1550278845/korean.jpg"  # Korean file
     url_link = "https://allergynode.herokuapp.com/photos/test-photo.jpg"
 
     final_result = get_allergies(url_link=url_link, allergies=None)
